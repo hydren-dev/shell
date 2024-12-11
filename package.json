@@ -1,0 +1,17 @@
+{
+  "name": "next-terminal",
+  "version": "1.0.0",
+  "description": "A beautiful HTML terminal using Next.js",
+  "main": "index.js",
+  "dependencies": {
+    "next": "^13.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "license": "MIT"
+}
