@@ -1,17 +1,24 @@
 {
   "name": "next-terminal",
   "version": "1.0.0",
-  "description": "A beautiful HTML terminal using Next.js",
-  "main": "index.js",
-  "dependencies": {
-    "next": "^13.0.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
-  },
+  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "next lint"
   },
-  "license": "MIT"
+  "dependencies": {
+    "next": "13.4.6",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.0.24",
+    "typescript": "^5.0.0",
+    "@types/react": "^18.0.0",
+    "@types/node": "^18.0.0",
+    "postcss": "^8.4.16",
+    "autoprefixer": "^10.4.7"
+  }
 }
