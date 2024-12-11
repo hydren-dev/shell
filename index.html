@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Next.js Beautiful Terminal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white/5 text-white font-mono h-screen flex items-center justify-center overflow-hidden">
+
+  <div class="terminal w-full max-w-4xl p-6 bg-black/60 rounded-lg flex flex-col">
+    <div id="terminalOutput" class="terminal-output flex-1 p-2 overflow-y-auto font-mono text-lg"></div>
+    <input id="terminalInput" type="text" class="terminal-input w-full p-2 mt-2 bg-transparent border-none text-lg text-white focus:outline-none" placeholder="Type your command..." autofocus>
+  </div>
+
+  <script>
+    const terminalOutput = document.getElementById("terminalOutput");
+    const terminalInput = document.getElementById("terminalInput");
+
+    terminalInput.addEventListener("keydown", async (e) => {
+      if (e.key === "Enter") {
+        const command = terminalInput.value;
+        terminalOutput.innerHTML += `<div>> ${command}</div>`;
+        terminalInput.value = "";
+        await runCommand(command);
+      }
+    });
+
+    async function runCommand(command) {
+      const response = await fetch('/api/runcommand', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ command })
+      });
+
+      const data = await response.json();
+      terminalOutput.innerHTML += `<div>${data.output}</div>`;
+      terminalOutput.scrollTop = terminalOutput.scrollHeight;
+    }
+  </script>
+</body>
+</html>
